@@ -1,7 +1,6 @@
 {
   "name": "eol-fix-stream",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "mocha",
@@ -17,5 +16,17 @@
   },
   "dependencies": {
     "through2": "^2.0.1"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/catdad/eol-fix-stream.git"
+  },
+  "bugs": {
+    "url": "https://github.com/catdad/eol-fix-stream/issues"
+  },
+  "homepage": "https://github.com/catdad/eol-fix-stream#readme",
+  "description": ""
 }
