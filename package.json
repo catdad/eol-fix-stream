@@ -11,6 +11,7 @@
   "license": "ISC",
   "devDependencies": {
     "chai": "^3.5.0",
+    "event-stream": "^3.3.4",
     "istanbul": "^0.4.5",
     "mocha": "^3.0.2"
   },
