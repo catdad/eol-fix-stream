@@ -23,3 +23,29 @@
 [10]: https://david-dm.org/catdad/eol-fix-stream.svg
 [11]: https://david-dm.org/catdad/eol-fix-stream
 
+End all the things with `lf`.
+
+## Install
+
+```bash
+npm install --save eol-fix-stream
+```
+
+## Use
+
+```javascript
+var eolFix = require('eol-fix-stream');
+
+var input = getInputStreamSomehow();
+var output = getOutputStreamSomehow();
+
+input.pipe(eolFix()).pipe(output);
+```
+
+For example, you can create a CLI module that reads standard input, fixes line endings, and writes to standard output:
+
+```javascript
+var eolFix = require('eol-fix-stream');
+
+process.stdin.pipe(eolFix()).pipe(process.stdout);
+```
