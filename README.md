@@ -42,7 +42,7 @@ var output = getOutputStreamSomehow();
 input.pipe(eolFix()).pipe(output);
 ```
 
-For example, you can create a CLI module that reads standard input, fixes line endings, and writes to standard output:
+For example, you can create a CLI module that reads standard input, fixes line endings, and writes to standard output in just two lines:
 
 ```javascript
 var eolFix = require('eol-fix-stream');
