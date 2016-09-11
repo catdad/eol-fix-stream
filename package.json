@@ -1,6 +1,7 @@
 {
   "name": "eol-fix-stream",
   "version": "1.0.0",
+  "description": "end all the things with lf",
   "main": "index.js",
   "scripts": {
     "test": "mocha",
@@ -29,6 +30,5 @@
   "bugs": {
     "url": "https://github.com/catdad/eol-fix-stream/issues"
   },
-  "homepage": "https://github.com/catdad/eol-fix-stream#readme",
-  "description": ""
+  "homepage": "https://github.com/catdad/eol-fix-stream#readme"
 }
