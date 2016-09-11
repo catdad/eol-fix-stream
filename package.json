@@ -7,18 +7,18 @@
     "test": "mocha",
     "coverage": "istanbul cover --dir coverage node_modules/mocha/bin/_mocha"
   },
-  "keywords": [],
+  "keywords": ["eol", "fix", "stream", "crlf"],
   "author": "Kiril Vatev <vatev.1@gmail.com>",
   "license": "ISC",
+  "dependencies": {
+    "through2": "^2.0.1"
+  },
   "devDependencies": {
     "chai": "^3.5.0",
     "codeclimate-test-reporter": "^0.3.3",
     "event-stream": "^3.3.4",
     "istanbul": "^0.4.5",
     "mocha": "^3.0.2"
-  },
-  "dependencies": {
-    "through2": "^2.0.1"
   },
   "directories": {
     "test": "test"
