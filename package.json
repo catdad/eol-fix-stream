@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha",
+    "debug": "mocha --inspect-brk",
     "coverage": "istanbul cover --dir coverage node_modules/mocha/bin/_mocha"
   },
   "keywords": ["eol", "fix", "stream", "crlf"],
