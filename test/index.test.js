@@ -33,7 +33,6 @@ describe('[index]', function () {
   });
 
   it('handles weird lncr business output by Windows CLIs', function (done) {
-    debugger;
     es.readArray([
       'chunk\n', '\rwith\n', '\rline\n', '\rendings'
     ]).pipe(mod()).pipe(es.wait(function (err, data) {
@@ -78,7 +77,6 @@ describe('[index]', function () {
     ]).pipe(mod(eol='\r\n')).pipe(es.wait(function (err, data) {
       data = data.toString();
 
-//      expect(data).to.not.match(/\r\n/g);
       expect(data).to.equal('chunk\r\nchunk\r\nchunk\r\nchunk\r\nchunk\r\n');
 
       done();
