@@ -74,7 +74,7 @@ describe('[index]', function () {
   it('replaces \\n with eol="\\r\\n"', function (done) {
     es.readArray([
       'chunk\nchunk\rchunk\r\nchunk\r', '\nchunk', '\n',
-    ]).pipe(mod(eol='\r\n')).pipe(es.wait(function (err, data) {
+    ]).pipe(mod('\r\n')).pipe(es.wait(function (err, data) {
       data = data.toString();
 
       expect(data).to.equal('chunk\r\nchunk\r\nchunk\r\nchunk\r\nchunk\r\n');

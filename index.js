@@ -3,7 +3,11 @@
 var through = require('through2');
 var assert = require('assert');
 
-module.exports = function lfcrClean(eol='\n') {
+module.exports = function lfcrClean(eol) {
+  if (!eol) {
+    // Set a default
+    eol = '\n';
+  }
   assert(['\r', '\n', '\r\n'].includes(eol), `Invalid EOL: '${eol}'`);
 
   var crlf = /\r\n|\n\r|\n|\r/g;
@@ -24,7 +28,7 @@ module.exports = function lfcrClean(eol='\n') {
       prev = '';
     }
   
-    // change any remaining cr to eol
+    // change any remaining cr or lf to eol
     data = data.replace(crlf, eol);
 
     cb(null, data);
