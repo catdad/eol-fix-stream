@@ -5,9 +5,15 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha",
-    "coverage": "istanbul cover --dir coverage node_modules/mocha/bin/_mocha"
+    "coverage": "istanbul cover --dir coverage node_modules/mocha/bin/_mocha",
+    "coverage:report": "codeclimate-test-reporter < coverage/lcov.info"
   },
-  "keywords": ["eol", "fix", "stream", "crlf"],
+  "keywords": [
+    "eol",
+    "fix",
+    "stream",
+    "crlf"
+  ],
   "author": "Kiril Vatev <vatev.1@gmail.com>",
   "license": "ISC",
   "dependencies": {
