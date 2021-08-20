@@ -1,19 +1,19 @@
 # eol fix stream
 
 [![Build][1]][2]
-[![Test Coverage][3]][4]
-[![Code Climate][5]][6]
+[![Coverage][3]][4]
+[![Maintainability][5]][6]
 [![Downloads][7]][8]
 [![Version][9]][8]
 [![Dependency Status][10]][11]
 
-[1]: https://travis-ci.org/catdad/eol-fix-stream.svg?branch=master
-[2]: https://travis-ci.org/catdad/eol-fix-stream
+[1]: https://img.shields.io/github/workflow/status/catdad/eol-fix-stream/CI?label=CI&logo=github
+[2]: https://github.com/catdad/eol-fix-stream/actions/workflows/ci.yml
 
-[3]: https://codeclimate.com/github/catdad/eol-fix-stream/badges/coverage.svg
+[3]: https://img.shields.io/codeclimate/coverage/catdad/eol-fix-stream
 [4]: https://codeclimate.com/github/catdad/eol-fix-stream/coverage
 
-[5]: https://codeclimate.com/github/catdad/eol-fix-stream/badges/gpa.svg
+[5]: https://img.shields.io/codeclimate/maintainability/catdad/eol-fix-stream
 [6]: https://codeclimate.com/github/catdad/eol-fix-stream
 
 [7]: https://img.shields.io/npm/dm/eol-fix-stream.svg
