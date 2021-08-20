@@ -25,6 +25,8 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - run: npm install
       - run: npm test
+      - run: npm run coverage
+      - run: npm run coverage:report
       - name: inspect tarball
         run: npm pack
   publish:
