@@ -27,6 +27,8 @@ jobs:
       - run: npm test
       - run: npm run coverage
       - run: npm run coverage:report
+        env:
+          CODECLIMATE_REPO_TOKEN: 3e833448cdac80032731f87794884ab46ea8f154e4822bcc2b896a0cb743541f
       - name: inspect tarball
         run: npm pack
   publish:
