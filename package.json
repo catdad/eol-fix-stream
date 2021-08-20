@@ -7,7 +7,12 @@
     "test": "mocha",
     "coverage": "istanbul cover --dir coverage node_modules/mocha/bin/_mocha"
   },
-  "keywords": ["eol", "fix", "stream", "crlf"],
+  "keywords": [
+    "eol",
+    "fix",
+    "stream",
+    "crlf"
+  ],
   "author": "Kiril Vatev <vatev.1@gmail.com>",
   "license": "ISC",
   "dependencies": {
