@@ -1,6 +1,6 @@
 /* jshint node: true */
 
-var through = require('through2');
+var Transform = require('stream').Transform;
 
 var allowedEol = {
   '\r': true,
@@ -20,7 +20,8 @@ module.exports = function lfcrClean(options) {
   var endCrlf = /\r|\n$/;
   var prev = '';
 
-  return through(function (chunk, enc, cb) {
+  var stream = new Transform();
+  stream._transform = function (chunk, enc, cb) {
     var data = chunk.toString();
 
     if (prev) {
@@ -38,9 +39,12 @@ module.exports = function lfcrClean(options) {
     data = data.replace(crlf, eol);
 
     cb(null, data);
-  }, function (cb) {
+  };
+  stream._flush = function (cb) {
     if (prev) {
       cb(null, prev.replace(crlf, eol));
     }
-  });
+  };
+
+  return stream;
 };
