@@ -1,11 +1,10 @@
 {
   "name": "eol-fix-stream",
-  "version": "1.0.0",
+  "version": "1.1.1",
   "description": "end all the things with lf",
   "main": "index.js",
   "scripts": {
     "test": "mocha",
-    "debug": "mocha --inspect-brk",
     "coverage": "istanbul cover --dir coverage node_modules/mocha/bin/_mocha",
     "coverage:report": "codeclimate-test-reporter < coverage/lcov.info"
   },

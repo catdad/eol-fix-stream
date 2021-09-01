@@ -49,13 +49,3 @@ var eolFix = require('eol-fix-stream');
 
 process.stdin.pipe(eolFix()).pipe(process.stdout);
 ```
-
-By default, all line endings will be `lf` (or `\n` for all you non-nerds). If you would like to use a different line ending, you can specify one:
-
-```javascript
-var eolFix = require('eol-fix-stream');
-
-process.stdin.pipe(eolFix({ eol: '\r\n' })).pipe(process.stdout);
-```
-
-Currently, the only supported line endings are: `\n`, `\r`, and `\r\n`.
