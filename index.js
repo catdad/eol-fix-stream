@@ -2,45 +2,46 @@
 
 var through = require('through2');
 
-var allowedEol = {
-  '\r': true,
-  '\n': true,
-  '\r\n': true
-};
+module.exports = function lfcrClean() {
+  var endsInLf = false;
+  var endsInCr = false;
 
-module.exports = function lfcrClean(options) {
-  options = options || {};
-  var eol = options.eol || '\n';
+  var endLf = /\n$/;
+  var endCr = /\r$/;
+  var startLf = /^\n/;
+  var startCr = /^\r/;
+  var crlf = /\r\n/g;
+  var cr = /\r/g;
 
-  if (!allowedEol[eol]) {
-    throw new Error('Invalid `eol` option: "' + eol + '"');
-  }
-
-  var crlf = /\r\n|\n\r|\n|\r/g;
-  var endCrlf = /\r|\n$/;
-  var prev = '';
+  // because Windows CLIs :(
+  var lfcr = /\n\r/g;
 
   return through(function (chunk, enc, cb) {
     var data = chunk.toString();
 
-    if (prev) {
-      data = prev + data;
+    // replace crlf to lf throughout the chunk
+    data = data.replace(crlf, '\n').replace(lfcr, '\n');
+
+    if (endsInLf) {
+      // the previous chunk ended in lf, so if this one starts
+      // in cr, we should just remove the cr (since lf was
+      // already written)
+      data = data.replace(startCr, '');
     }
 
-    if (endCrlf.test(data)) {
-      prev = data.slice(-1);
-      data = data.slice(0, -1);
-    } else {
-      prev = '';
+    if (endsInCr) {
+      // we would have already replaced that cr with lf,
+      // so just remove the first lf at the start of the
+      // stringfrom this chunk
+      data = data.replace(startLf, '');
     }
 
-    // change any remaining cr or lf to eol
-    data = data.replace(crlf, eol);
+    endsInLf = endLf.test(data);
+    endsInCr = endCr.test(data);
+
+    // change any remaining cr to lf
+    data = data.replace(cr, '\n');
 
     cb(null, data);
-  }, function (cb) {
-    if (prev) {
-      cb(null, prev.replace(crlf, eol));
-    }
   });
 };
