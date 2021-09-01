@@ -1,6 +1,6 @@
 {
   "name": "eol-fix-stream",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "end all the things with lf",
   "main": "index.js",
   "scripts": {
