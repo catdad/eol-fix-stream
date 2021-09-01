@@ -8,7 +8,8 @@ module.exports = function lfcrClean(eol) {
     // Set a default
     eol = '\n';
   }
-  assert(['\r', '\n', '\r\n'].includes(eol), `Invalid EOL: '${eol}'`);
+
+  assert(['\r', '\n', '\r\n'].includes(eol), 'Invalid EOL: "' + eol + '"');
 
   var crlf = /\r\n|\n\r|\n|\r/g;
   var endCrlf = /\r|\n$/;
@@ -27,7 +28,7 @@ module.exports = function lfcrClean(eol) {
     } else {
       prev = '';
     }
-  
+
     // change any remaining cr or lf to eol
     data = data.replace(crlf, eol);
 
