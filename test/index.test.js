@@ -75,7 +75,7 @@ describe('[index]', function () {
     it('accepts \\r\\n as a custom line ending', function (done) {
       es.readArray([
         'chunk\nchunk\rchunk\r\nchunk\r', '\nchunk', '\n',
-      ]).pipe(mod('\r\n')).pipe(es.wait(function (err, data) {
+      ]).pipe(mod({ eol: '\r\n' })).pipe(es.wait(function (err, data) {
         data = data.toString();
 
         expect(data).to.equal('chunk\r\nchunk\r\nchunk\r\nchunk\r\nchunk\r\n');
@@ -87,7 +87,7 @@ describe('[index]', function () {
     it('accepts \\r as a custom line ending', function (done) {
       es.readArray([
         'chunk\nchunk\rchunk\r\nchunk\r', '\nchunk', '\n',
-      ]).pipe(mod('\r')).pipe(es.wait(function (err, data) {
+      ]).pipe(mod({ eol: '\r' })).pipe(es.wait(function (err, data) {
         data = data.toString();
 
         expect(data).to.equal('chunk\rchunk\rchunk\rchunk\rchunk\r');
@@ -99,7 +99,7 @@ describe('[index]', function () {
     it('accepts \\n as a custom line ending', function (done) {
       es.readArray([
         'chunk\nchunk\rchunk\r\nchunk\r', '\nchunk', '\n',
-      ]).pipe(mod('\n')).pipe(es.wait(function (err, data) {
+      ]).pipe(mod({ eol: '\n' })).pipe(es.wait(function (err, data) {
         data = data.toString();
 
         expect(data).to.equal('chunk\nchunk\nchunk\nchunk\nchunk\n');
@@ -110,8 +110,8 @@ describe('[index]', function () {
 
     it('throws if an unknown custom line ending is used', function () {
       expect(function () {
-        mod('wat');
-      }).to.throw(Error, 'Invalid EOL: "wat"');
+        mod({ eol: 'wat' });
+      }).to.throw(Error, 'Invalid `eol` option: "wat"');
     });
   });
 });

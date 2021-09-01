@@ -8,14 +8,12 @@ var allowedEol = {
   '\r\n': true
 };
 
-module.exports = function lfcrClean(eol) {
-  if (!eol) {
-    // Set a default
-    eol = '\n';
-  }
+module.exports = function lfcrClean(options) {
+  options = options || {};
+  var eol = options.eol || '\n';
 
   if (!allowedEol[eol]) {
-    throw new Error('Invalid EOL: "' + eol + '"');
+    throw new Error('Invalid `eol` option: "' + eol + '"');
   }
 
   var crlf = /\r\n|\n\r|\n|\r/g;
