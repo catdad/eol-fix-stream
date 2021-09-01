@@ -17,7 +17,7 @@ module.exports = function lfcrClean(options) {
   }
 
   var crlf = /\r\n|\n\r|\n|\r/g;
-  var endCrlf = /\r|\n$/;
+  var endCrlf = /\r$|\n$/;
   var prev = '';
 
   return through(function (chunk, enc, cb) {
@@ -41,6 +41,8 @@ module.exports = function lfcrClean(options) {
   }, function (cb) {
     if (prev) {
       cb(null, prev.replace(crlf, eol));
+    } else {
+      cb();
     }
   });
 };
