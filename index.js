@@ -1,7 +1,12 @@
 /* jshint node: true */
 
 var through = require('through2');
-var assert = require('assert');
+
+var allowedEol = {
+  '\r': true,
+  '\n': true,
+  '\r\n': true
+};
 
 module.exports = function lfcrClean(eol) {
   if (!eol) {
@@ -9,7 +14,9 @@ module.exports = function lfcrClean(eol) {
     eol = '\n';
   }
 
-  assert(['\r', '\n', '\r\n'].includes(eol), 'Invalid EOL: "' + eol + '"');
+  if (!allowedEol[eol]) {
+    throw new Error('Invalid EOL: "' + eol + '"');
+  }
 
   var crlf = /\r\n|\n\r|\n|\r/g;
   var endCrlf = /\r|\n$/;
