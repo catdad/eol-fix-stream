@@ -33,9 +33,6 @@ module.exports = function lfcrClean(eol) {
 
     cb(null, data);
   }, function (cb) {
-    if (prev) {
-      prev = prev.replace(crlf, eol);
-    }
-    cb(null, prev);
+    cb(null, prev.replace(crlf, eol));
   });
 };
