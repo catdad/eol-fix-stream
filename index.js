@@ -3,13 +3,17 @@
 var through = require('through2');
 var assert = require('assert');
 
-var allowedEol = ['\r', '\n', '\r\n'];
+var allowedEol = {
+  '\r': true,
+  '\n': true,
+  '\r\n': true,
+};
 
 module.exports = function lfcrClean(options) {
   options = options || {};
   var eol = options.eol || '\n';
 
-  if (!allowedEol.includes(eol)) {
+  if (!allowedEol[eol]) {
     throw new Error('Invalid `eol` option: "' + eol + '"');
   }
 
