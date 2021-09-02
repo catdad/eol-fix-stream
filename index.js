@@ -3,12 +3,15 @@
 var through = require('through2');
 var assert = require('assert');
 
-module.exports = function lfcrClean(eol) {
-  if (!eol) {
-    // Set a default
-    eol = '\n';
+var allowedEol = ['\r', '\n', '\r\n'];
+
+module.exports = function lfcrClean(options) {
+  options = options || {};
+  var eol = options.eol || '\n';
+
+  if (!allowedEol.includes(eol)) {
+    throw new Error('Invalid `eol` option: "' + eol + '"');
   }
-  assert(['\r', '\n', '\r\n'].includes(eol), `Invalid EOL: '${eol}'`);
 
   var crlf = /\r\n|\n\r|\n|\r/g;
   var endCrlf = /\r$|\n$/;
